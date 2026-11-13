@@ -1,39 +1,41 @@
-pipleline{
-  agent any
-  stages{
-     stage('checkout'){
-       steps{
-         checkout scm
-       }
-     }
-    stage("build"){
-          steps{
-            echo 'checking python application
-            bat 'python -m py_compile app.py'
-          }
-          }
-          stage('test'){
-            steps{
-              echo 'executing automated tests'
-              bat 'python -m unittest app'
-            }
-          }
-          stage('run application'){
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
             steps {
-              bat 'python app.py'
+                checkout scm
             }
-          }
-          }
-          post {
-            success {
-              echo 'ci pipleline completed successfully'
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Checking Python application'
+                bat 'python -m py_compile app.py'
             }
-            failure {
-              echo 'ci pipeline failed'
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Executing automated tests'
+                bat 'python -m unittest app'
             }
-          }
-          }
-          
-          
-      
-          
+        }
+
+        stage('Run Application') {
+            steps {
+                bat 'python app.py'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'CI pipeline completed successfully'
+        }
+        failure {
+            echo 'CI pipeline failed'
+        }
+    }
+}
