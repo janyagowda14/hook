@@ -6,7 +6,7 @@ pipleline{
          checkout scm
        }
      }
-    stage("build'){
+    stage("build"){
           steps{
             echo 'checking python application
             bat 'python -m py_compile app.py'
