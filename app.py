@@ -15,7 +15,7 @@ def test_multiply(self):
 if__name__ == "__main__":
   print("Student Calculator Application")
   print("Addition:",add(20,20))
-  print("Subtraction:",subtract(20,10))
+  print("Subtraction:",subtract(20,15))
   print("Multiplication:",multiply(5,4))
 
   print("\nExecuting Automated Tests...\n")
